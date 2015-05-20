@@ -1,0 +1,101 @@
+package es.bsc.autonomic.powermodeller.tools.featureScaling;
+
+import au.com.bytecode.opencsv.CSVReader;
+import es.bsc.autonomic.powermodeller.configuration.CoreConfiguration;
+import es.bsc.autonomic.powermodeller.exceptions.DataSetException;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+
+/**
+ * @author Mauro Canuto (mauro.canuto@bsc.es)
+ */
+public class DataStandardizationTest {
+
+    private String csv1path = getClass().getResource("/scale1test.csv").getPath();
+    private String csv2path = getClass().getResource("/scale2test.csv").getPath();
+
+    private static boolean deleteDirectory(File path) {
+        if (path.exists()) {
+            File[] files = path.listFiles();
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isDirectory()) {
+                    deleteDirectory(files[i]);
+                } else {
+                    files[i].delete();
+                }
+            }
+        }
+        return (path.delete());
+    }
+
+    @Test
+    public void scaleDataset() {
+        CSVReader reader = null;
+        DataStandardization data = new DataStandardization();
+
+        data.generateStandardization(csv1path, "A");
+        try{
+            reader = new CSVReader(new FileReader(data.getFileOutputPath()), CoreConfiguration.CSV_DELIMITER);
+
+            //Read all rows at once
+            List<String[]> allRows = reader.readAll();
+
+
+            assertTrue(Arrays.toString(allRows.get(0)).equals("[A, B, C]"));
+            assertTrue(Arrays.toString(allRows.get(1)).equals("[2, -1, 1]"));
+            assertTrue(Arrays.toString(allRows.get(2)).equals("[1, 0, 0]"));
+            assertTrue(Arrays.toString(allRows.get(3)).equals("[3, 1, -1]"));
+
+        } catch (IOException e) {
+            throw new DataSetException("Error while reading CSV file.");
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                throw new DataSetException("Error while closing CSV file.");
+            }
+        }
+    }
+
+
+    @Test
+    public void applyScaling(){
+        CSVReader reader = null;
+        DataStandardization data_t = new DataStandardization();
+        data_t.generateStandardization(csv1path, "A");
+
+        DataStandardization data = new DataStandardization(data_t.getMu(), data_t.getSigma());
+        data.applyStandardization(csv2path, "A");
+
+        try{
+            reader = new CSVReader(new FileReader(data.getFileOutputPathValidated()), CoreConfiguration.CSV_DELIMITER);
+
+            //Read all rows at once
+            List<String[]> allRows = reader.readAll();
+
+            assertTrue(Arrays.toString(allRows.get(0)).equals("[A, B, C]"));
+            assertTrue(Arrays.toString(allRows.get(1)).equals("[4, -1, 1]"));
+            assertTrue(Arrays.toString(allRows.get(2)).equals("[2, 0, 0]"));
+            assertTrue(Arrays.toString(allRows.get(3)).equals("[6, 1, -1]"));
+
+        } catch (IOException e) {
+            throw new DataSetException("Error while reading CSV file.");
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                throw new DataSetException("Error while closing CSV file.");
+            }
+        }
+    }
+}

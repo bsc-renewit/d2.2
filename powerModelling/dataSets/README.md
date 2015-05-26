@@ -30,7 +30,7 @@ The validation directory contains data collected during the execution of real-wo
 
 
 Each row of the CSVs represents a sample captured during the execution of the benchmarks.
-The 1st column contains the timestamp of a sample. 
+The 1st column contains the timestamp of the sample. 
 The 2nd column contains the power consumed. 
 The rest of the columns contains different performance indicators (that can vary depending on the server architecture) representing both system-level and low-level metrics for different resources (CPU, cache, main memory, disk, network).
 

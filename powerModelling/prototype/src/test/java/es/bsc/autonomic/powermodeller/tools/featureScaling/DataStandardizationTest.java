@@ -1,18 +1,3 @@
-/*
-    Copyright 2015 Barcelona Supercomputing Center
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-*/
 package es.bsc.autonomic.powermodeller.tools.featureScaling;
 
 import au.com.bytecode.opencsv.CSVReader;
@@ -67,9 +52,9 @@ public class DataStandardizationTest {
 
 
             assertTrue(Arrays.toString(allRows.get(0)).equals("[A, B, C]"));
-            assertTrue(Arrays.toString(allRows.get(1)).equals("[2, -1, 1]"));
-            assertTrue(Arrays.toString(allRows.get(2)).equals("[1, 0, 0]"));
-            assertTrue(Arrays.toString(allRows.get(3)).equals("[3, 1, -1]"));
+            assertTrue(Arrays.toString(allRows.get(1)).equals("[2, 299, 301]"));
+            assertTrue(Arrays.toString(allRows.get(2)).equals("[1, 300, 300]"));
+            assertTrue(Arrays.toString(allRows.get(3)).equals("[3, 301, 299]"));
 
         } catch (IOException e) {
             throw new DataSetException("Error while reading CSV file.");
@@ -99,9 +84,9 @@ public class DataStandardizationTest {
             List<String[]> allRows = reader.readAll();
 
             assertTrue(Arrays.toString(allRows.get(0)).equals("[A, B, C]"));
-            assertTrue(Arrays.toString(allRows.get(1)).equals("[4, -1, 1]"));
-            assertTrue(Arrays.toString(allRows.get(2)).equals("[2, 0, 0]"));
-            assertTrue(Arrays.toString(allRows.get(3)).equals("[6, 1, -1]"));
+            assertTrue(Arrays.toString(allRows.get(1)).equals("[4, 299, 301]"));
+            assertTrue(Arrays.toString(allRows.get(2)).equals("[2, 300, 300]"));
+            assertTrue(Arrays.toString(allRows.get(3)).equals("[6, 301, 299]"));
 
         } catch (IOException e) {
             throw new DataSetException("Error while reading CSV file.");

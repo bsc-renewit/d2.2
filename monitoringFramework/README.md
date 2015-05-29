@@ -1,8 +1,8 @@
 # Monitoring framework
 
 The monitoring-framework  is a metric collection framework developed at BSC. 
-It gathers metrics additionally to the ones collected by gmond or Host sFlow, and injects them to gmond using gmetric. In this sense, it plays a similar role as Host sFlow (see Figure 1). It collects hardware performance events counters (host and VM level), raw performance events counters (host and VM level), usage per core and power metrics from several sources and sensors. It can also collect additional metrics that depend on the sensor availability in each server, like temperature metrics. It has been implemented in Python, and invokes external programs or uses available Python libraries to capture these additional metrics.
-The performance and raw performance event counters are collected by means of perf, a profiler tool supported by Linux 2.6+ based systems. The perf tool can measure events coming from different sources such as pure kernel counters (context-switches, minor-fault, etc.) and micro-architectural events (number of cpu cycles, instructions retired, level 1 cache misses, last level cache misses, etc.). The raw performance event counters  are additional CPU counters that perf does not list out-of-the-box as named counters. Examples of them are the number of integer or floating point operations executed. To capture them, its hexadecimal code needs to be find out using perfmon2/libpfm (described in 23) and supplied to perf to capture them.
+It gathers metrics additionally to the ones collected by gmond or Host sFlow, and injects them to gmond using gmetric. In this sense, it plays a similar role as Host sFlow. It collects hardware performance events counters (host and VM level), raw performance events counters (host and VM level), usage per core and power metrics from several sources and sensors. It can also collect additional metrics that depend on the sensor availability in each server, like temperature metrics. It has been implemented in Python, and invokes external programs or uses available Python libraries to capture these additional metrics.
+The performance and raw performance event counters are collected by means of perf, a profiler tool supported by Linux 2.6+ based systems. The perf tool can measure events coming from different sources such as pure kernel counters (context-switches, minor-fault, etc.) and micro-architectural events (number of cpu cycles, instructions retired, level 1 cache misses, last level cache misses, etc.). The raw performance event counters  are additional CPU counters that perf does not list out-of-the-box as named counters. Examples of them are the number of integer or floating point operations executed. To capture them, its hexadecimal code needs to be find out using perfmon2/libpfm (described later) and supplied to perf to capture them.
 
 -----------------------------
 ========= Requirements ==========
@@ -13,12 +13,6 @@ sudo pip install pexpect;
 sudo easy_install pysnmp;
 sudo pip install psutil
 
-#Run at boot
-sudo nano /etc/init.d/monitoring-modules - Paste startup code
-cd /etc/init.d
-sudo update-rc.d monitoring-modules defaults
-
-)
 - Install pexpect:
 	sudo pip install pexpect
 

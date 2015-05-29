@@ -12,7 +12,9 @@ Different types of model have been implemented and can be used in order to devel
 		1.	Generate a model for each subsystem
 		2.	Combined the generated models using the same or a different algorithm
 
+-----------------------------
 ========= Configuration ==========
+-----------------------------
 
 Configuration files, if not present, will be automatically created the first time the tool is executed. 
 If the environment variable PMG_HOME is not set, the default directory /opt/PowerModelGenerator will be used.
@@ -107,9 +109,10 @@ Exponentiation, Squared roots and Logarithmic funcions can be used: E.g. log({cp
 
 -----------------------------
 Do not modify *.r files. They are used for filtering and error calculation.
------------------------------
 
+-----------------------------
 ========= Execution ==========
+-----------------------------
 
 Requirements: Maven, Java 7
 In the “prototype” directory run 'mvn package'.

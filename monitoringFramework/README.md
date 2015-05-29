@@ -1,4 +1,4 @@
-# Monitoring framework
+# Monitoring Framework
 
 The monitoring-framework  is a metric collection framework developed at BSC. 
 It gathers metrics additionally to the ones collected by gmond or Host sFlow, and injects them to gmond using gmetric. In this sense, it plays a similar role as Host sFlow. It collects hardware performance events counters (host and VM level), raw performance events counters (host and VM level), usage per core and power metrics from several sources and sensors. It can also collect additional metrics that depend on the sensor availability in each server, like temperature metrics. It has been implemented in Python, and invokes external programs or uses available Python libraries to capture these additional metrics.

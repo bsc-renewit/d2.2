@@ -1,14 +1,14 @@
+# Power modeller
 
 This tool contains a power model generation for energy assessment of heterogeneous workloads that allows to estimate and predict power consumption of a server.
-
 Different types of model have been implemented and can be used in order to develop a generic power model:
 
-Resources model: following this approach, the power consumption is computed as the sum of the power consumed by the main subsystems of a host:
+- Resources model: following this approach, the power consumption is computed as the sum of the power consumed by the main subsystems of a host:
 	Ptot = Pcpu + Pmemory + Pdisk+ Pnetwork
 
-Global model: This approach does not consider each resource (CPU, memory, disk and network) separately but the relationship between two or more explanatory variables using all the data acquired during the micro-benchmarks execution as a training set.
+- Global model: This approach does not consider each resource (CPU, memory, disk and network) separately but the relationship between two or more explanatory variables using all the data acquired during the micro-benchmarks execution as a training set.
 
-Combined model: The composed model is made up of 2 steps:
+- Combined model: The composed model is made up of 2 steps:
 		1.	Generate a model for each subsystem
 		2.	Combined the generated models using the same or a different algorithm
 

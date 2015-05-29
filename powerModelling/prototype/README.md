@@ -1,4 +1,4 @@
-# Power modeller
+# Power Modeller
 
 This tool contains a power model generation for energy assessment of heterogeneous workloads that allows to estimate and predict power consumption of a server.
 Different types of model have been implemented and can be used in order to develop a generic power model:

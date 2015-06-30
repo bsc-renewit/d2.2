@@ -1,6 +1,6 @@
 # RenewIT Deliverable D2.2
 
-Prototype files for Deliverable 2.2 of [RenewIT project](http://www.renewit-project.eu/): Green management of Data Centres.
+Prototype files for [Deliverable 2.2](Green%20Management%20of%20DC_models.pdf) of [RenewIT project](http://www.renewit-project.eu/): Green management of Data Centres.
 
 This prototype releases a model for energy and ecological efficiency assessment, as well as the initial specification of the algorithms for energy-driven run-time optimisation of local VM placement and Data Centre selection for remote VM placement, focusing on how they use the model for energy and ecological efficiency assessment.
 

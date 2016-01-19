@@ -8,7 +8,8 @@ The prototype is structured as follows:
 
 *	`monitoringFramework` contains a metric collection framework developed at BSC to gather power and performance metrics, in addition to the metrics that are already provided by the third-party monitoring agents.
 *	`powerModeling/datasets` contains the data that has been collected during the execution of benchmarks in different host environments (two different models of AMD Opteron and three different models of Intel Xeon processors).
-*	`powerModeling/prototype` contains the prototype implementation of the power model generator that allows to estimate and predict the power consumption of a server.
+*	`powerModeling/prototype` contains the prototype implementation of the power model generator that allows to estimate and predict the power consumption of a server. A more advance power modeller can be found at https://github.com/maurocanuto/power-estimator-r. This R tool selects systematically a minimum set of resource usage indicators and extracts complex relations among them, capturing the impact on energy consumption of all the resources of a system.
+
 *	`algorithms/clopla` contains the Clopla java library that, given a set of virtual machines and hosts, computes the optimized placement for the VMs.
 
 
